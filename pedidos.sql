@@ -7,6 +7,12 @@
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 5.6.31
 
+DROP DATABASE IF EXISTS `Pedidos`;
+
+CREATE DATABASE Pedidos
+
+USE `Pedidos`;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -28,7 +34,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `categoria`
 --
 
-CREATE TABLE `categoria` (
+CREATE TABLE `categorias` (
   `CodCat` int(11) NOT NULL,
   `Nombre` varchar(45) NOT NULL,
   `Descripcion` varchar(200) NOT NULL
@@ -81,14 +87,14 @@ CREATE TABLE `productos` (
   `Descripcion` varchar(90) NOT NULL,
   `Peso` float NOT NULL,
   `Stock` int(11) NOT NULL,
-  `CodCat` int(11) NOT NULL
+  `Categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`CodProd`, `Nombre`, `Descripcion`, `Peso`, `Stock`, `CodCat`) VALUES
+INSERT INTO `productos` (`CodProd`, `Nombre`, `Descripcion`, `Peso`, `Stock`, `Categoria`) VALUES
 (1, 'Harina', '8 paquetes de 1kg de harina cada uno', 8, 100, 1),
 (2, 'Azúcar', '20 paquetes de 1kg cada uno', 20, 3, 1),
 (3, 'Agua 0.5', '100 botellas de 0.5 litros cada una', 51, 100, 2),

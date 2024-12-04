@@ -8,10 +8,23 @@
 <body>
 
 <?php
-  if (isset($_GET['usuario']) && isset($_GET['password'])) {
-    session_start();
-    $usuario = $_SESSION['usuario'] = $;
-    $clave = $_SESSION['clave'];
+	require_once 'bd.php';
+
+
+  if ($_SERVER["REQUEST_METHOD"] = "POST") {
+    $usu = comprobar_usuario($_POST['usuario'], $_POST['clave']);
+    if($usu=== false) {
+      $err = TRUE;
+      $usuario = $_POST['usuario'];
+    }else{
+      session_start();
+      $_SESSION['usuario'] = $usu;
+      $_SESSION['correo'] = [];
+      header("Location: categorias.php");
+      return;
+    }
+  }else{
+    echo "Escribe bien la contraseña";
   }
 ?>
 
